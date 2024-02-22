@@ -1,39 +1,32 @@
-// // Promises
-// let admin = new Promise(function(resolve, reject){
-//     setTimeout(function(){
-//         console.log("Print After 5 sec")
-//     },5000)
-//     // resolve(101)
-//     reject(new Error("Reject hi gya bro"));        //Explicitly we occur error
-// })
+// API Calling
+const API_key = "6348e7651370319b6a8befbfc8d1b012";
+async function showWheather(){
 
-// console.log("function ke bhar hu bhai me")
+    try {
+        let city = "London";
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_key}`);
+        const data = await response.json();
+    
+        console.log("Wheather is " , data);
+    
+        let newPara = document.createElement("p");
+        newPara.textContent = `${data?.main?.temp.toFixed(2)} ℃`
+    
+        document.body.appendChild(newPara); 
+    } catch (error) {
+        console.log("Error");
+    }
 
-// // then & catch method
-// admin.then((value) => console.log(value))
-// admin.catch((value) => console.log("Error Occur"))
+}
 
-// // In one line then & Catch
-// admin.then((value) => console.log(value), (value)=> console.log("Error aa gya bro"))
+// Another API Call
 
-// Important Concept using Promises & then() Method
+async function customFunction(){
+    let lati = 15.333;
+    let long = 15.212;
 
-// let promise1 = new Promise(function(resolve, reject){
-//     setTimeout(()=>{
-//         console.log("Promise no 1")
-//     },2000);
-//     resolve(true);
-// })
-// let output = promise1.then(()=>{
-//     let promise2 = new Promise(function(resolve,reject){
-//         setTimeout(()=>{
-//             console.log("Promise no 2")
-//         },4000);
-//         resolve("Resolve Done");
-//     })
-//     return promise2;
-// })
+    let data = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lati}&lon=${long}&appid=${API_key}`);
+    let result = data.json();
 
-// output.then((value)=>{
-//     console.log(value);
-// })
+    console.log("Weather is ", result);
+}
