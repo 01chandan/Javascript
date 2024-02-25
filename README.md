@@ -6,4 +6,4 @@ Objects
 ES11 (ES2020)
 Basic Concepts
 Arrays
-Arrays are versatile data structures that enable you to manage collections of elements efficiently.
+Arrays are versatile data structures that enable you to manage collections of elements efficiently..
